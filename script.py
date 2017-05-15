@@ -3,6 +3,9 @@ from display import *
 from matrix import *
 from draw import *
 
+num_frames = 0
+basename = "simple"
+
 """======== first_pass( commands, symbols ) ==========
 
   Checks the commands array for any animation commands
@@ -21,7 +24,16 @@ from draw import *
   jdyrlandweaver
   ==================== """
 def first_pass( commands ):
-    pass
+    global num_frames
+    global basename
+
+    has_vary = False
+    has_frames = False
+    
+    for command in commands:
+        if command[0] == "vary":
+            has_vary = True
+        if 
 
 
 """======== second_pass( commands ) ==========
