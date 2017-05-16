@@ -1,10 +1,13 @@
 import mdl
+
+import sys
+
 from display import *
 from matrix import *
 from draw import *
 
 num_frames = 0
-basename = "simple"
+basename = 0
 
 """======== first_pass( commands, symbols ) ==========
 
@@ -24,16 +27,25 @@ basename = "simple"
   jdyrlandweaver
   ==================== """
 def first_pass( commands ):
-    global num_frames
-    global basename
-
     has_vary = False
-    has_frames = False
     
     for command in commands:
         if command[0] == "vary":
             has_vary = True
-        if 
+        elif command[0] == "basename":
+            basename = command[1]
+        elif command[0] == "frames":
+            num_frames = command[1]
+
+    if has_vary and (num_frames == 0):
+        print "ERROR: frames not set"
+        sys.exit()
+
+    if basename == 0:
+        print "WARNING: BASENAME NOT FOUND"
+        basename = "simple"
+        print "BASENAME SET TO: simple"
+    
 
 
 """======== second_pass( commands ) ==========
