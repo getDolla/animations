@@ -69,8 +69,8 @@ def second_pass( commands, num_frames ):
     knobs = [ {} for x in range(num_frames) ]
 
     for command in commands:
-         if command[0] == "vary":
-              if (int(command[2]) > num_frames) or (int(command[3]) > num_frames):
+      if command[0] == "vary":
+        if (int(command[2]) > num_frames) or (int(command[3]) > num_frames):
                   print "ERROR: frames for " + command[1] + " out of bounds"
                   s.exit()
 
