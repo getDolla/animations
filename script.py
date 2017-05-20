@@ -13,8 +13,8 @@ basename = 0
 
   Checks the commands array for any animation commands
   (frames, basename, vary)
-  
-  Should set num_frames and basename if the frames 
+
+  Should set num_frames and basename if the frames
   or basename commands are present
 
   If vary is found, but frames is not, the entire
@@ -28,7 +28,7 @@ basename = 0
   ==================== """
 def first_pass( commands ):
     has_vary = False
-    
+
     for command in commands:
         if command[0] == "vary":
             has_vary = True
@@ -45,7 +45,7 @@ def first_pass( commands ):
         print "WARNING: BASENAME NOT FOUND"
         basename = "simple"
         print "BASENAME SET TO: simple"
-    
+
 
 
 """======== second_pass( commands ) ==========
@@ -60,10 +60,10 @@ def first_pass( commands ):
   key will be a knob name, and each value will be the knob's
   value for that frame.
 
-  Go through the command array, and when you find vary, go 
+  Go through the command array, and when you find vary, go
   from knobs[0] to knobs[frames-1] and add (or modify) the
   dictionary corresponding to the given knob with the
-  appropirate value. 
+  appropirate value.
   ===================="""
 def second_pass( commands, num_frames ):
     knobs = [ {} for x in range(num_frames) ]
@@ -72,7 +72,7 @@ def second_pass( commands, num_frames ):
         if command[0] == "vary":
             if (int(command[2]) > num_frames) or (int(command[3]) > num_frames):
                 print "ERROR: frames for " + command[1] + " out of bounds"
-                s.exit()
+                sys.exit()
 
         a = int(command[2])
         b = int(command[3])
@@ -81,8 +81,14 @@ def second_pass( commands, num_frames ):
             c = b
             b = a
             a = c
-                
 
+        init = float(command[4])
+        step = float(command[5])/(b - a + 1)
+        for i in range(a, b+1):
+            init += step
+            knobs[i][command[1]] = init
+
+    return knobs
 
 def run(filename):
     """
