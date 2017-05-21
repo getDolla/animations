@@ -204,10 +204,11 @@ def run(filename):
                 save_extension(screen, "anim/" + basename + ("%03d" % frame) + ".png")
                 print "Frame saved as anim/" + basename + ("%03d" % frame) + ".png"
 
-            ident(tmp)
-            stack = [ [x[:] for x in tmp] ]
-            screen = new_screen()
-            tmp = []
+        #resetting for next loop
+        ident(tmp)
+        stack = [ [x[:] for x in tmp] ]
+        screen = new_screen()
+        tmp = []
 
     if num_frames > 1:
         make_animation( basename )
