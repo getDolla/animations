@@ -10,7 +10,6 @@ push
 rotate y 90
 move 0 175 0
 rotate z 36 movinator
-vary movinator 0 99 0 1
 sphere 0 0 0 50
 pop
 //LEFT ARM
@@ -33,7 +32,6 @@ rotate z 132 movinator
 rotate y 100 movinator
 rotate x 20 movinator
 vary movinator 0 84 0 1
-vary movinator 85 99 1 1
 box 0 0 40 40 100 80
 //RIGHT LOWER ARM
 push

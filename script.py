@@ -76,24 +76,26 @@ def second_pass( commands, num_frames ):
 
     for command in commands:
         if command[0] == "vary":
-            if (int(command[2]) > num_frames) or (int(command[3]) > num_frames):
+            if (int(command[2]) >= num_frames) or (int(command[3]) >= num_frames):
                 print "ERROR: frames for " + command[1] + " out of bounds"
                 sys.exit()
 
-            a = int(command[2])
-            b = int(command[3])
+            else:
+                a = int(command[2])
+                b = int(command[3])
 
-            if a > b:
-                c = b
-                b = a
-                a = c
+                if a > b:
+                    c = b
+                    b = a
+                    a = c
 
-            init = float(command[4])
-            step = (float(command[5]) - init)/(b - a + 1)
-            for i in range(a, b+1):
-                init += step
-                knobs[i][command[1]] = init
+                init = float(command[4])
+                step = (float(command[5]) - init)/(b - a)
 
+                for i in range(a, b + 1):
+                    knobs[i][command[1]] = init
+                    init += step
+            #print knobs
     return knobs
 
 def run(filename):
@@ -122,7 +124,7 @@ def run(filename):
 
     for frame in range(num_frames):
         knob = knobs[frame]
-
+        #print knob
         for command in commands:
             #print command
             c = command[0]
