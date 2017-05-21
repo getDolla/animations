@@ -89,7 +89,7 @@ def second_pass( commands, num_frames ):
                 a = c
 
             init = float(command[4])
-            step = float(command[5])/(b - a + 1)
+            step = (float(command[5]) - init)/(b - a + 1)
             for i in range(a, b+1):
                 init += step
                 knobs[i][command[1]] = init
@@ -124,7 +124,7 @@ def run(filename):
         knob = knobs[frame]
 
         for command in commands:
-            print command
+            #print command
             c = command[0]
             args = command[1:]
 
