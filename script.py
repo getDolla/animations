@@ -106,6 +106,9 @@ def run(filename):
         print "Parsing failed."
         return
 
+    first_pass( commands )
+    knobs = second_pass( commands, num_frames )
+
     ident(tmp)
     stack = [ [x[:] for x in tmp] ]
     screen = new_screen()
