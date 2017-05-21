@@ -153,7 +153,7 @@ def run(filename):
                     knob[args[0]] = float(args[1])
 
             elif c == 'set_knobs':
-                for k in knob.keys():
+                for k in knob:
                     knob[k] = float(args[0])
 
             #transformations

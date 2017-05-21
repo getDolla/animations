@@ -5,4 +5,4 @@ clean:
 	rm *pyc *out parsetab.py
 
 clear:
-	rm -rf *pyc *out parsetab.py *ppm *png anim/*png
+	rm -rf *pyc *out parsetab.py *ppm *png *gif anim/*png
