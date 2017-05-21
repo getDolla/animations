@@ -187,6 +187,7 @@ def run(filename):
                 matrix_mult( stack[-1], tmp )
                 stack[-1] = [ x[:] for x in tmp]
                 tmp = []
+
             elif c == 'push':
                 stack.append([x[:] for x in stack[-1]] )
             elif c == 'pop':
@@ -195,3 +196,15 @@ def run(filename):
                 display(screen)
             elif c == 'save':
                 save_extension(screen, args[0])
+
+            if num_frames > 1:
+                save_extension(screen, "anim/" + basename + ("%03d" % frame) + ".png")
+                print "Frame saved as anim/" + basename + ("%03d" % frame) + ".png"
+
+            ident(tmp)
+            stack = [ [x[:] for x in tmp] ]
+            screen = new_screen()
+            tmp = []
+
+    if num_frames > 1:
+        make_animation( basename )
