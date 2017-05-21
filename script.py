@@ -178,7 +178,7 @@ def run(filename):
                 theta = args[1] * (math.pi/180)
 
                 if args[-1] != None and args[-1] in knob:
-                    args[1] *= knob[args[-1]]
+                    theta *= knob[args[-1]]
 
                 if args[0] == 'x':
                     tmp = make_rotX(theta)
