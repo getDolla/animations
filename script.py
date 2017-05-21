@@ -158,7 +158,7 @@ def run(filename):
 
             #transformations
             elif c == 'move':
-                if args[-1] != None and args[-1] in knob:
+                if args[-1] in knob:
                     args = [ i * knob[args[-1]] for i in args[:-1] ]
 
                 tmp = make_translate(args[0], args[1], args[2])
@@ -167,7 +167,7 @@ def run(filename):
                 tmp = []
 
             elif c == 'scale':
-                if args[-1] != None and args[-1] in knob:
+                if args[-1] in knob:
                     args = [ i * knob[args[-1]] for i in args[:-1] ]
 
                 tmp = make_scale(args[0], args[1], args[2])
@@ -177,7 +177,7 @@ def run(filename):
             elif c == 'rotate':
                 theta = args[1] * (math.pi/180)
 
-                if args[-1] != None and args[-1] in knob:
+                if args[-1] in knob:
                     theta *= knob[args[-1]]
 
                 if args[0] == 'x':
