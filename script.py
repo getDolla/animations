@@ -138,7 +138,18 @@ def run(filename):
             matrix_mult( stack[-1], tmp )
             draw_polygons(tmp, screen, color)
             tmp = []
+
+        #transformations
         elif c == 'move':
+            x =
+            y =
+            z =
+
+            if args[3]:
+                x *=
+                y *=
+                z *=
+
             tmp = make_translate(args[0], args[1], args[2])
             matrix_mult(stack[-1], tmp)
             stack[-1] = [x[:] for x in tmp]
