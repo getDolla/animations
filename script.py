@@ -101,8 +101,6 @@ def run(filename):
     This function runs an mdl script
     """
     color = [255, 255, 255]
-    tmp = new_matrix()
-    ident( tmp )
 
     p = mdl.parseFile(filename)
 
@@ -115,7 +113,8 @@ def run(filename):
     first_pass( commands )
     knobs = second_pass( commands, num_frames )
 
-    ident(tmp)
+    tmp = new_matrix()
+    ident( tmp )
     stack = [ [x[:] for x in tmp] ]
     screen = new_screen()
     tmp = []
@@ -205,7 +204,8 @@ def run(filename):
                 print "Frame saved as anim/" + basename + ("%03d" % frame) + ".png"
 
         #resetting for next loop
-        ident(tmp)
+        tmp = new_matrix()
+        ident( tmp )
         stack = [ [x[:] for x in tmp] ]
         screen = new_screen()
         tmp = []
