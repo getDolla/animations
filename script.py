@@ -119,8 +119,8 @@ def run(filename):
     step = 0.1
 
     for frame in range(num_frames):
-        knob = knos[frame]
-        
+        knob = knobs[frame]
+
         for command in commands:
             print command
             c = command[0]
@@ -145,6 +145,14 @@ def run(filename):
                 matrix_mult( stack[-1], tmp )
                 draw_polygons(tmp, screen, color)
                 tmp = []
+
+            elif c == 'set':
+                if args[0] in knob:
+                    knob[args[0]] = float(args[1])
+
+            elif c == 'set_knobs':
+                for k in knob.keys():
+                    knob[k] = float(args[0])
 
             #transformations
             elif c == 'move':
