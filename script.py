@@ -27,6 +27,9 @@ basename = 0
   jdyrlandweaver
   ==================== """
 def first_pass( commands ):
+    global basename
+    global num_frames
+
     has_vary = False
 
     for command in commands:
@@ -77,19 +80,19 @@ def second_pass( commands, num_frames ):
                 print "ERROR: frames for " + command[1] + " out of bounds"
                 sys.exit()
 
-        a = int(command[2])
-        b = int(command[3])
+            a = int(command[2])
+            b = int(command[3])
 
-        if a > b:
-            c = b
-            b = a
-            a = c
+            if a > b:
+                c = b
+                b = a
+                a = c
 
-        init = float(command[4])
-        step = float(command[5])/(b - a + 1)
-        for i in range(a, b+1):
-            init += step
-            knobs[i][command[1]] = init
+            init = float(command[4])
+            step = float(command[5])/(b - a + 1)
+            for i in range(a, b+1):
+                init += step
+                knobs[i][command[1]] = init
 
     return knobs
 
