@@ -156,26 +156,28 @@ def run(filename):
 
             #transformations
             elif c == 'move':
-                x =
-                y =
-                z =
-
-                if args[3]:
-                    x *=
-                    y *=
-                    z *=
+                if args[-1] != None and args[-1] in knob:
+                    args = [ i * knob[args[-1]] for i in args[:-1] ]
 
                 tmp = make_translate(args[0], args[1], args[2])
                 matrix_mult(stack[-1], tmp)
                 stack[-1] = [x[:] for x in tmp]
                 tmp = []
+
             elif c == 'scale':
+                if args[-1] != None and args[-1] in knob:
+                    args = [ i * knob[args[-1]] for i in args[:-1] ]
+
                 tmp = make_scale(args[0], args[1], args[2])
                 matrix_mult(stack[-1], tmp)
                 stack[-1] = [x[:] for x in tmp]
                 tmp = []
             elif c == 'rotate':
                 theta = args[1] * (math.pi/180)
+
+                if args[-1] != None and args[-1] in knob:
+                    args[1] *= knob[args[-1]]
+
                 if args[0] == 'x':
                     tmp = make_rotX(theta)
                 elif args[0] == 'y':
