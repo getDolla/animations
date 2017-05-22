@@ -203,7 +203,7 @@ def run(filename):
 
         if num_frames > 1:
             save_extension(screen, "anim/" + basename + ("%03d" % frame) + ".png")
-            print "Frame saved as anim/" + basename + ("%03d" % frame) + ".png"
+            print "Frame saved: anim/" + basename + ("%03d" % frame) + ".png"
 
         #resetting for next loop
         tmp = new_matrix()
